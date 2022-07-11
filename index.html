@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de memes</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js">
+</head>
+<body>
+    <div class="container">
+        
+        <!-- CABECERA -->        
+        <main class="main">
+            <header class="header" id="header">
+                <div class="header_title">Generador de memes</div>
+                <ul class="header_menu">
+                    <li id="btnImage"><i class="fas fa-file-image"></i> Imagen</li>
+                    <li id="btnText"><i class="fas fa-font"></i> Texto</li>
+                    <li id="btnMode"><i class="fas fa-lightbulb"></i>Modo Claro</li>
+                </ul>
+            </header>
+
+            <!-- MEME -->
+            <div class="box-container">
+                <div class="box" id="meme">
+                    <div class="top-text" id="topText">top text</div>
+                    <div class="image" id="memeBox"></div>
+                    <div class="bottom-text" id="bottomText">bottom text</div>
+                </div>
+                <div class="download" id="download_btn"><i class="fas fa-download"></i> Descargar meme</div>
+            </div>
+        </main>
+
+        <!-- ASIDE -->
+        <aside id="aside-panel" class="aside">
+
+            <div class="imagen" id="panel-image">
+                <h3>Imagen</h3>
+                <h4>url</h4>
+                <input type="text" name="url" id="inputUrl">
+                <form>
+                    <h4>Color</h4>
+                    <div class="color">
+                        <div class="color-img">
+                            <input type="color" value="#ffffff" name="color" id="color">
+                            <p id="color_p">#000000</p>
+                        </div>
+                        <div class="color-effect">
+                            <select name="effect" id="effect">
+                                <option value="ninguno">Ninguno</option>
+                                <option value="aclara">Aclarar</option>
+                                <option value="oscurecer">oscurecer</option>
+                                <option value="diferencia">Diferencia</option>
+                                <option value="luminosidad">Luminosidad</option>
+                                <option value="multiplicar">Multiplicar</option>
+                            </select>
+                        </div>
+                    </div>
+                        <h4>Filtros</h4>
+                            <div class="filtros">
+                                <label for="Brillo">Brillo</label>
+                                <input type="range" name="" id="brillo" min="0" max="100" value="100" step="0.1">
+                                <label for="Opacidad">Opacidad</label>
+                                <input type="range" name="" id="opacidad" min="0" max="100" value="100" step="0.1">
+                                <label for="Contraste">Contraste</label>
+                                <input type="range" name="" id="contraste" min="100" max="1000" value="100" step="1">
+                                <label for="Desenfoque">Desenfoque</label>
+                                <input type="range" name="" id="desenfoque" min="0" max="5" value="0" step="0.1">
+                                <label for="Escala de grises">Escala de grises</label>
+                                <input type="range" name="" id="grises" min="0" max="100" value="1" step="1">
+                                <label for="Sepia">Sepia</label>
+                                <input type="range" name="" id="sepia" min="0" max="100" value="1" step="1">
+                                <label for="Hue">Hue</label>
+                                <input type="range" name="" id="hue" min="0" max="359" value="0" step="1">
+                                <label for="Saturado">Saturado</label>
+                                <input type="range" name="" id="saturado" min="100" max="1000" value="100" step="10">
+                                <label for="Negativo">Negativo</label>
+                                <input type="range" name="" id="negativo" min="0" max="100" value="0" step="0.1">
+                                <input type="reset" value="Reestablecer filtros" id="reset">
+                            </div>
+                </form>
+            </div>
+
+
+
+                <div class="texto d-none" id="panel-text">
+                    <h3>texto</h3>
+                    <h4>superior</h4>
+                    <textarea name="top-text" id="topInput" cols="30" >TOP TEXT</textarea>
+                    <div class="txt-check">
+                        <input type="checkbox" name="top" id="topCheck">
+                        <p>Sin texto superior</p>
+                    </div>
+                    <h4>Inferior</h4>
+                    <textarea name="bottom-text" id="bottomInput" cols="30" >BOTTOM TEXT</textarea>
+                    <div class="txt-check">
+                        <input type="checkbox" name="bot" id="bottomCheck">
+                        <p>Sin texto inferior</p>
+                    </div>
+                    <h4>fuente</h4>
+                    <select name="fonts" id="fonts" aria-label="fonts">
+                        <option value="arial">Arial</option>
+                        <option value="arial black">Arial Black</option>
+                        <option value="american typewriter">American Typewriter</option>
+                        <option value="andale mono">Andale Mono</option>
+                        <option value="comic sans ms">Comic Sans MS</option>
+                        <option value="helvetica">Helvetica</option>
+                        <option value="impact" selected>Impact</option>
+                        <option value="verdana">Verdana</option>
+                        <option value="times new roman">Times New Roman</option>
+                    </select>
+                    <div class="size">
+                        <div class="size_txt">
+                            <input type="number" id="size" value="25" min="10" size="">
+                        </div>
+                        <div class="size_left" id="align_left"><i class="fas fa-align-left"></i></div>
+                        <div class="size_center" id="align_center"><i class="fas fa-align-center"></i></div>
+                        <div class="size_right" id="align_right"><i class="fas fa-align-right"></i></div>
+                    </div>
+                    <div class="color-text">
+                        <div class="color-text_">
+                            <h4>color</h4>
+                            <div class="color-txt">
+                                <input type="color" name="color-txt" id="colorTxt">
+                                <p id="colorCodTxt">#000000</p>
+                            </div>
+                        </div>
+                        <div class="color-text_">
+                            <h4>fondo</h4>
+                            <div class="color-bg">
+                                <input type="color" name="color-bg" id="colorBg" value="#ffffff">
+                                <p id="colorCodBg">#ffffff</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="txt-check">
+                        <input type="checkbox" name="bot" id="bg_transparent">
+                        <p>fondo transparente</p>
+                    </div>
+                    <h4>contorno</h4>
+                    <div class="contorno">
+                        <div class="contorno_" id="stroke_none">Ninguno</div>
+                        <div class="contorno_" id="stroke_light">Claro</div>
+                        <div class="contorno_" id="stroke_dark">Oscuro</div>
+                    </div>
+                    <h4>espaciado</h4>
+                    <div class="espaciado">
+                        <input type="number" id="espaciado" value="10">
+                    </div>
+                    <h4>interlineado</h4>
+                    <select name="interlineado" id="linespacing" aria-label="interlineado">
+                        <option value="0.8">0.8</option>
+                        <option value="1.2">1.2</option>
+                        <option value="1.5">1.5</option>
+                        <option value="2">2</option>
+                        <option value="2.5">2.5</option>
+                    </select>
+                    
+                </div>
+        </aside>    
+    </div>
+    <script src="./main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js" integrity="sha512-csNcFYJniKjJxRWRV1R7fvnXrycHP6qDR21mgz1ZP55xY5d+aHLfo9/FcGDQLfn2IfngbAHd8LdfsagcCqgTcQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js" integrity="sha512-01CJ9/g7e8cUmY0DFTMcUw/ikS799FHiOA0eyHsUWfOetgbx/t6oV4otQ5zXKQyIrQGTHSmRVPIgrgLcZi/WMA==" crossorigin="anonymous"></script>
+</body>
+</html>
+
+
+<!--
+
+-->
