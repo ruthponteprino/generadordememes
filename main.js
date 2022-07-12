@@ -50,21 +50,19 @@ bottomInput.addEventListener('input', (e) =>{
 topCheck.addEventListener('click', () => {
     if(topCheck.checked == true){
         topText.classList.toggle('d-none')
-        memeBox.style.height = "300px"
+        //memeBox.style.height = "300px"
     } else {
         topText.classList.remove('d-none')
-        memeBox.style.height = "250px"
+        //memeBox.style.height = "250px"
     }
 })
 
 bottomCheck.addEventListener('click', () => {
     if(bottomCheck.checked == true){
         bottomText.classList.toggle('d-none')
-        memeBox.style.height = "300px"
         
     } else {
         bottomText.classList.remove('d-none')
-        memeBox.style.height = "250px"
     }
 })
 
@@ -93,8 +91,8 @@ color.addEventListener('input', () => {
 })
 
 const efectos = () => {
-    if(effect.value === "Ninguno"){
-        memeBox.style.mixBlendMode = "normal"
+    if(effect.value === "ninguno"){
+        memeBox.style.mixBlendMode = ""
     } else if(effect.value === "oscurecer"){
         memeBox.style.mixBlendMode = "darken"
     } else if(effect.value === "aclarar"){
